@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:Q1="http://www.example.org/schema/1519743994947" xmlns:head="urn://co-opbank.co.ke/CommonServices/Data/Message/MessageHeader" xmlns:tns="urn://co-opbank.co.ke/CommonServices/Data/BFUB/AccountFundsTransfer/3.2" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified" targetNamespace="urn://co-opbank.co.ke/CommonServices/Data/BFUB/AccountFundsTransfer/3.2">
+	<xsd:import namespace="urn://co-opbank.co.ke/CommonServices/Data/Message/MessageHeader" schemaLocation="../../../../../../../XML/LIB_XML/Schemas/CommonServices/Data/Message/1.0/MessageHeader.xsd"/>
+	<xsd:element name="ResquestBodyType" type="tns:AccFundTrRequestType"/>
+
+
+<!-- REQUEST 001 -->
+		<xsd:complexType name="AccFundTrRequestType">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" name="OperationParameters" type="tns:OperationParametersType"/>
+
+					<xsd:element maxOccurs="1" minOccurs="1" name="TransactionItems" type="tns:TransactionItemsType"/>
+					
+				</xsd:sequence>
+		</xsd:complexType>	
+		<xsd:complexType name="OperationParametersType">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" name="MessageReference" type="xsd:string"/>
+					<xsd:element minOccurs="0" name="MessageType" type="xsd:string">
+					</xsd:element>
+					<xsd:element minOccurs="0" name="ChannelID" type="xsd:string">
+					</xsd:element>
+					<xsd:element minOccurs="0" name="UserID" type="xsd:string">
+					</xsd:element>
+					<xsd:element minOccurs="0" name="MessageDateTime" type="xsd:dateTime">
+					</xsd:element>
+					<xsd:element minOccurs="0" name="ValueDate" type="xsd:dateTime">
+					</xsd:element>
+					<xsd:element minOccurs="0" name="NoOfElements" type="xsd:int">
+					</xsd:element>
+					
+					<xsd:element minOccurs="0" name="CustomerNumber" type="xsd:string">
+					</xsd:element>
+					<xsd:element minOccurs="0" name="CallBackUrl" type="xsd:string">
+					</xsd:element>
+							
+					<xsd:element name="OperationId" type="xsd:string"/>
+					<xsd:element name="TransferType" type="xsd:string">
+						</xsd:element>
+						
+						<xsd:element minOccurs="0" name="ExchangeRateDetails" type="tns:ExchangeRateDetailsType">
+					</xsd:element>
+				</xsd:sequence>
+		</xsd:complexType>
+
+
+<!-- RESPONSE 001 -->
+
+
+        <xsd:complexType name="TransactionItemsType">
+			<xsd:sequence>
+				<xsd:element maxOccurs="unbounded" minOccurs="0" name="TransactionItem" type="tns:TransactionItemType"/>
+				
+			</xsd:sequence>
+		</xsd:complexType>
+
+		<xsd:complexType name="TransactionItemType">
+			<xsd:sequence>
+				<xsd:element minOccurs="0" name="TransactionItemKey" type="xsd:string">
+				</xsd:element>
+				<xsd:element minOccurs="0" name="AccountNumber" type="xsd:string">
+				</xsd:element>
+				<xsd:element minOccurs="0" name="DebitCreditFlag" type="xsd:string">
+				</xsd:element>
+				<xsd:element minOccurs="0" name="TransactionAmount" type="xsd:decimal">
+				</xsd:element>
+				<xsd:element minOccurs="0" name="TransactionCurrency" type="xsd:string">
+				</xsd:element>
+				<xsd:element minOccurs="0" name="TransactionReference" type="xsd:string">
+				</xsd:element>
+				<xsd:element minOccurs="0" name="Narrative" type="xsd:string">
+				</xsd:element>
+				<xsd:element minOccurs="0" name="BaseEquivalent" type="xsd:decimal">
+				</xsd:element>
+				<xsd:element minOccurs="0" name="BankCode" type="xsd:string"/>
+				<xsd:element minOccurs="0" name="SourceBranch" type="xsd:string">
+				</xsd:element>
+				<xsd:element minOccurs="0" name="TransactionCode" type="xsd:string">
+				</xsd:element>
+				
+			</xsd:sequence>
+		</xsd:complexType>
+		
+   
+    
+    <xsd:complexType name="ExchangeRateDetailsType">
+    	<xsd:sequence>
+    		<xsd:element minOccurs="0" name="FromCurrency" type="xsd:string">
+    		</xsd:element>
+    		<xsd:element minOccurs="0" name="ExchangeRate" type="xsd:double">
+    		</xsd:element>
+    		<xsd:element minOccurs="0" name="ExchangeRateFlag" type="xsd:string">
+    		</xsd:element>
+    		<xsd:element minOccurs="0" name="ToCurrency" type="xsd:string"/>
+    	</xsd:sequence>
+    </xsd:complexType>
+
+
+    <xsd:element name="ResponseBodyType" type="xsd:string"/>
+</xsd:schema>
